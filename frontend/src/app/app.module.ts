@@ -9,6 +9,7 @@ import { CardFormComponent } from "./card-form/card-form.component";
 import { StripeClientService } from "./providers/stripe-elements.service";
 import { QAndAComponent } from "./q-and-a/q-and-a.component";
 import { FooterComponent } from "./footer/footer.component";
+import { MetaService } from "./providers/meta.service";
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FooterComponent } from "./footer/footer.component";
   ],
   providers: [
     FormBuilder,
-    StripeClientService
+    StripeClientService,
+    MetaService
   ],
   bootstrap: [AppComponent]
 })

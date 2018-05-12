@@ -28,6 +28,9 @@
                 <button class="btn btn-outline-light btn-block payment-button" type="submit" [disabled]="isLoading || isComplete">Feed me</button>
             </div>
           </form>
+          <div  *ngIf="errorMessage" class="alert alert-danger" role="alert">
+            {{ errorMessage }}
+          </div>
         </div>
       </div>
     </div>

@@ -34,6 +34,8 @@ export class TransactionsController {
     private createRoute(): void {
         this.router.post("/", (req: express.Request, res: express.Response) => {
             if (this.isTooMuchMoney(req.body.amount)) {
+                console.error("Too much money");
+
                 res.json({
                     result: "fail",
                     message: "Come on now I'm not going to take more than £10",
@@ -61,6 +63,8 @@ export class TransactionsController {
 
     private createCharge(charge: stripe.charges.IChargeCreationOptions, res: express.Response): void {
         this.stripeService.charges.create(charge).then(stripeResponse => {
+            console.log(`Charge for £${charge.amount} created successfully`);
+
             res.json({
                 result: "success",
                 message: "thank you for giving me money",
@@ -69,6 +73,8 @@ export class TransactionsController {
             });
         })
         .catch(err => {
+            console.error("502 error with stripe");
+
             res.status(502).json({
                 result: "fail",
                 message: "are you trying to cheat me my dude",

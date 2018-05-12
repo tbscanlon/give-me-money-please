@@ -14,6 +14,7 @@ export class CardFormComponent implements OnInit {
     public isComplete = false;
     public form: FormGroup;
     public placeholderName: string;
+    public errorMessage: string;
 
     private MAX_MONEY_AMOUNT = 10;
 
@@ -46,7 +47,13 @@ export class CardFormComponent implements OnInit {
                         .subscribe(() => {
                             this.toggleCompletionState();
                             this.toggleLoadingState();
-                        });
+                        },
+                        (err: Error) => {
+                            console.error(err.message);
+                            this.errorMessage = err.message;
+                            this.toggleLoadingState();
+                        }
+                    );
                 }
             });
     }

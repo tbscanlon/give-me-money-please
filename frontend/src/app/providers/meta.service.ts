@@ -26,7 +26,7 @@ export class MetaService {
 
   private get twitterMetaTags(): HTMLMetaElement {
     return this.meta.addTag(
-      { name: "twitter:card", content: "summary" }
+      { name: "twitter:card", content: "summary-large-image" }
     );
   }
 
